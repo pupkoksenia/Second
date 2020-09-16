@@ -5,37 +5,32 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        try {
-            Scanner input = new Scanner(System.in);
+        try(Scanner input = new Scanner(System.in)) {
+          //  Scanner input = new Scanner(System.in);
             System.out.println("Write size of matrix");
             int size = input.nextInt();
 
+            if (size <= 0) {
+                throw new Exception("Число k должно быть натуральным");
+            }
             int[][] firstArray = new int[size][size];
             int[][] secondArray = new int[size][size];
 
-            System.out.println("Write integers in first  matrix");
+            System.out.println("Write integers in first  matrix and second");
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
-                    Scanner in = new Scanner(System.in);
-                    firstArray[i][j] = in.nextInt();
+                    firstArray[i][j] = input.nextInt();
+                    secondArray[i][j] = input.nextInt();
                 }
             }
 
-
-            System.out.println("Write integers in second matrix");
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    Scanner in = new Scanner(System.in);
-                    secondArray[i][j] = in.nextInt();
-                }
-            }
 
             int[][] newArray = new int[size][size];
 
             int[] tmpArray = new int[size];
             for (int i = 0; i < size; i++) {
                 int x = secondArray[i][0];
-                for (int j = 1; j < size; j++) {
+                for (int j = 1; j < size; j++){
                     x = x * secondArray[i][j];
                 }
                 tmpArray[i] = x;
@@ -53,14 +48,15 @@ public class Main {
                 }
                 System.out.println();
             }
-            if (size <= 0) {
-                throw new Exception("Число k должно быть натуральным");
-            }
 
-            input.close();
+
+            //input.close();
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
+        }
+        finally {
+            System.err.println("All done");
         }
 
     }
