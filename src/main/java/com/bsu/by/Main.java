@@ -25,9 +25,9 @@ public class Main {
             }
 
 
-            int[][] newArray = new int[size][size];
+            int[][] newArray = createMatrix(firstArray,secondArray,size);
 
-            int[] tmpArray = new int[size];
+          /*  int[] tmpArray = new int[size];
             for (int i = 0; i < size; i++) {
                 int x = secondArray[i][0];
                 for (int j = 1; j < size; j++){
@@ -41,7 +41,7 @@ public class Main {
                     newArray[i][j] = firstArray[i][j] + tmpArray[j];
                 }
             }
-
+*/
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
                     System.out.print(newArray[i][j] + " ");
@@ -49,7 +49,20 @@ public class Main {
                 System.out.println();
             }
 
-
+            System.out.println("First");
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    System.out.print(firstArray[i][j] + " ");
+                }
+                System.out.println();
+            }
+System.out.println("second");
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    System.out.print(secondArray[i][j] + " ");
+                }
+                System.out.println();
+            }
             //input.close();
         } catch (Exception ex) {
 
@@ -59,6 +72,25 @@ public class Main {
             System.err.println("All done");
         }
 
+    }
+    static int[][] createMatrix(int[][] firstArray, int[][] secondArray,int size){
+        int[][] newArray = new int[size][size];
+
+        int[] tmpArray = new int[size];
+        for (int i = 0; i < size; i++) {
+            int x = secondArray[i][0];
+            for (int j = 1; j < size; j++){
+                x = x * secondArray[i][j];
+            }
+            tmpArray[i] = x;
+        }
+
+        for (int j = 0; j < size; j++) {
+            for (int i = 0; i < size; i++) {
+                newArray[i][j] = firstArray[i][j] + tmpArray[j];
+            }
+        }
+        return newArray;
     }
 }
 
