@@ -1,12 +1,13 @@
 package com.bsu.by;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        try(Scanner input = new Scanner(System.in)) {
-          //  Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
+            //  Scanner input = new Scanner(System.in);
             System.out.println("Write size of matrix");
             int size = input.nextInt();
 
@@ -25,9 +26,9 @@ public class Main {
             }
 
 
-            int[][] newArray = createMatrix(firstArray,secondArray,size);
+            int[][] newArray = createMatrix(firstArray, secondArray, size);
 
-          /*  int[] tmpArray = new int[size];
+            int[] tmpArray = new int[size];
             for (int i = 0; i < size; i++) {
                 int x = secondArray[i][0];
                 for (int j = 1; j < size; j++){
@@ -41,8 +42,7 @@ public class Main {
                     newArray[i][j] = firstArray[i][j] + tmpArray[j];
                 }
             }
-*/
-            for (int i = 0; i < size; i++) {
+for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
                     System.out.print(newArray[i][j] + " ");
                 }
@@ -56,7 +56,7 @@ public class Main {
                 }
                 System.out.println();
             }
-System.out.println("second");
+            System.out.println("second");
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
                     System.out.print(secondArray[i][j] + " ");
@@ -65,21 +65,20 @@ System.out.println("second");
             }
             //input.close();
         } catch (Exception ex) {
-
             System.out.println(ex.getMessage());
-        }
-        finally {
+        } finally {
             System.err.println("All done");
         }
 
     }
-    static int[][] createMatrix(int[][] firstArray, int[][] secondArray,int size){
+
+    static int[][] createMatrix(int[][] firstArray, int[][] secondArray, int size) {
         int[][] newArray = new int[size][size];
 
         int[] tmpArray = new int[size];
         for (int i = 0; i < size; i++) {
             int x = secondArray[i][0];
-            for (int j = 1; j < size; j++){
+            for (int j = 1; j < size; j++) {
                 x = x * secondArray[i][j];
             }
             tmpArray[i] = x;
